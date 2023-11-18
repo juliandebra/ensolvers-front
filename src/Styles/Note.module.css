@@ -1,0 +1,107 @@
+.noteModal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    position: fixed;
+    top: 94px;
+    right: 0;
+    left: 100%;
+    background-image: linear-gradient(#ffffff 1.1rem, #ccc 1.2rem);
+    background-size: 100% 1.2rem;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    border-radius: 10px;
+    padding: 50px;
+    font-size: 14px;
+    opacity: 0;
+  }
+  .noteModal.active {
+    transform: translateX(-100%);
+    opacity: 1;
+  }
+
+  .title {
+    width: 100%;
+    height: 30px;
+    max-width: 400px; 
+    margin: 0 0 20px 0;
+    font-size: 14px;
+    text-align: left;
+  }
+  
+  .description {
+    display: flex;
+    align-items: start; 
+    width: 100%;
+    max-width: 400px; 
+    /* background-color: white; */
+    min-height: 100px;
+    margin: 0px 0; 
+    font-size: 14px;
+
+  }
+  .textarea{
+    display: flex;
+    align-items: center; 
+    width: 100%;
+    max-width: 400px; 
+    height: 200px;
+    margin: 20px 0; 
+    font-size: 14px;
+    font-size: 100%;
+    padding: 0.8em;
+    outline: none;
+    border: 2px solid rgb(200, 200, 200);
+    border-radius: 20px;
+    width: 100%;
+  }
+  
+  .bottomSection{
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .tags {
+    width: 100%;
+    height: 30px;
+    max-width: 400px; 
+    margin: 20px 0;
+    font-size: 14px;
+  }
+
+  .date {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .buttonSection{
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  
+  .button {
+    font-size: 1rem;
+    padding: 0.8em 2em;
+    background-color: #000;
+    border: 3px solid yellow;
+    border-radius: 1em;
+    color: #fff;
+    font-weight: bolder;
+    transition: cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.4s;
+    box-shadow: -5px 5px 0px 0px yellow;
+  }
+  
+  .button:hover {
+    transform: translate(5px, -5px);
+  }
+  .errorText{
+    color: red;
+  }
+  .errButton {
+    background-color: red;
+  }

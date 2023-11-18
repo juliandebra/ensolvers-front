@@ -1,0 +1,29 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 30px 30px 90px 30px;
+}
+  
+.list > * {
+  flex: 1 0 calc(23% - 1rem);
+  margin: 0.5rem;
+}
+  
+@media (max-width: 1200px) {
+  .list > * {
+      flex-basis: calc(31.33% - 1rem);
+  }
+}
+  
+@media (max-width: 800px) {
+  .list > * {
+    flex-basis: calc(48% - 1rem);
+  }
+}
+  
+@media (max-width: 500px) {
+  .list > * {
+      flex-basis: calc(100% - 1rem);
+  }
+}

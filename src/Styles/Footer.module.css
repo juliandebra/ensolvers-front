@@ -1,0 +1,16 @@
+.footer {
+    bottom: 0;
+    width: 100%;
+    background-color: #241623;
+    color: #F7FFF7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+  }
+
+  .image{
+    width: 60px;
+    margin: 10px;
+  }
