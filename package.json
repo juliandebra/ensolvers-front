@@ -9,6 +9,11 @@
     "build": "vite build",
     "preview": "vite preview"
   },
+  "vercel": {
+    "rewrites": [
+      { "source": "/(.*)", "destination": "/index.html" }
+    ]
+  },
   "dependencies": {
     "axios": "^1.6.2",
     "react": "^18.2.0",
