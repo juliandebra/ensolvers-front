@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNoteContext } from '../Context/NoteContext'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { deleteNote, getNote } from '../Services/sqlCalls'
 import styles, {noteModal, title, description, bottomSection, buttonSection, date, button, errButton} from '../Styles/Note.module.css' 
 import Swal from 'sweetalert2'
@@ -9,9 +9,11 @@ const NoteDetail = () => {
 
     const {noteSelected, noteDispatch} = useNoteContext()
     const [isActive, setIsActive] = useState(false)
+
     useEffect(() => {
-      setIsActive(true);
-    }, []);
+      setIsActive(true)
+    }, [])
+
     const formattedDate = new Date(noteSelected?.date).toLocaleDateString('es-ES', {
       year: 'numeric',
       month: 'numeric',
@@ -51,6 +53,8 @@ const NoteDetail = () => {
       }).then( async (res) => {
         if (res.value) {
           const result = await deleteNote(noteSelected.id)
+          noteDispatch({type: 'DELETE_NOTE', payload: noteSelected})
+          navigate('/')
         }})
       } catch(err){
         console.error('Error al eliminar la nota:', err)
@@ -73,6 +77,7 @@ const NoteDetail = () => {
         <div className={buttonSection}>
           <button className={button} onClick={handleEdit}>Edit</button>
           <button className={errButton} onClick={handleDelete}>Delete</button>
+          <Link to='/'><button className={button}>Close</button></Link>
         </div>
         
     </div>}

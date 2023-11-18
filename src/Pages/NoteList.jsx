@@ -8,7 +8,7 @@ const NoteList = () => {
     const {list, loading} = useNoteContext()
   return (
     <>
-      <h1>My notes</h1>
+      <h1>myNotes</h1>
       <ListFilter/>
       <div className={ListStyles.list}>
       {loading ? (

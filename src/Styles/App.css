@@ -24,6 +24,7 @@ textarea{
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
 }
 button {
+  margin: 10px;
   font-size: 1rem;
   padding: 0.8em 2em;
   background-color: #000;

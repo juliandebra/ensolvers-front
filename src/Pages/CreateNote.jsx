@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useNoteContext } from '../Context/NoteContext'
 import { createNote, editNote, getNote } from '../Services/sqlCalls'
-import { Link, useLocation, useParams } from 'react-router-dom'
-import styles, {errorText, title, textarea, tags, button, errButton} from '../Styles/Note.module.css' 
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
+import styles, {errorText, title, textarea, tags, button, errButton,buttonSection} from '../Styles/Note.module.css' 
 
 const CreateNote = () => {
     const date = new Date()
@@ -30,9 +30,9 @@ const CreateNote = () => {
     }, [])
 
     const {id} = useParams()
+    const navigate = useNavigate()
 
     const handleChange = (e) => setNote({...note, [e.target.name]: e.target.value})
-
     useEffect(() => {
         if (noteEdit) {
           setNote({
@@ -50,6 +50,7 @@ const CreateNote = () => {
                 ...noteData,
                 date: noteData.date ? noteData.date : formattedDate,
               })
+              noteDispatch({type: 'EDIT_NOTE', payload: noteData})
             } catch (error) {
               console.error('Error al obtener la nota:', error)
             }
@@ -86,8 +87,9 @@ const CreateNote = () => {
 
         if(noteEdit) {
             try {
-                const editedNote = await editNote(note)
-                noteDispatch({type: 'MODIFY_NOTE', payload: note})
+                const editedNote = await editNote({...note, id})
+                noteDispatch({type: 'MODIFY_NOTE', payload: {...note, id}})
+                navigate('/')
             } catch (error) {
                 console.error('Error al crear la nota:', error)
             }
@@ -95,6 +97,7 @@ const CreateNote = () => {
             try {
                 const createdNote = await createNote({...note, date: formattedDate})
                 noteDispatch({type: 'CREATE_NOTE', payload: createdNote})
+                navigate('/')
             } catch (error) {
                 console.error('Error al crear la nota:', error)
             }
@@ -109,8 +112,10 @@ const CreateNote = () => {
         {descriptionError && <div className={errorText}>{descriptionError}</div>}
         <input className={tags} name='tags' type="text" value={note.tags} placeholder='Tags (separated by commas)' onChange={handleChange}/>
         {tagsError && <div className={errorText}>{tagsError}</div>}
-        <button className={button} onClick={handleNote}>{pathname != '/createnote' ? 'Edit' : 'Create'} note</button>
-        {pathname  != '/createnote' && <Link to='/'><button className={errButton}>cancel</button></Link>}
+        <div className={buttonSection}>
+          <button className={button} onClick={handleNote}>{pathname != '/createnote' ? 'Edit' : 'Create'} note</button>
+          {pathname  != '/createnote' && <Link to='/'><button className={errButton}>Cancel</button></Link>}
+        </div>
     </div>
   )
 }

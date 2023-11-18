@@ -1,6 +1,7 @@
 import { createContext, useContext, useReducer, useEffect } from "react"
 import { getNotes } from "../Services/sqlCalls"
 import { noteReducer } from "../reducers/noteReducer"
+import { useNavigate } from "react-router-dom"
 
 const NoteContext = createContext()
 
@@ -14,6 +15,7 @@ const initialState = {
 const Context = ({children}) => {
     const [noteState, noteDispatch] = useReducer(noteReducer, initialState)
     const {noteEdit, noteSelected, list, loading} = noteState
+    const navigate = useNavigate()
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -31,7 +33,7 @@ const Context = ({children}) => {
         } 
         fetchData()
     }, [])
-    console.log(noteState)
+
     return (
         <NoteContext.Provider value={{noteEdit, noteSelected, list, loading, noteDispatch}}>
             {children}

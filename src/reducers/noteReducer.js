@@ -12,11 +12,14 @@ export const noteReducer = (state, action) => {
             return {...state, noteEdit: action.payload, noteSelected: null}
         case 'MODIFY_NOTE':
             const listModified = state.list.filter(note => note.id != action.payload.id)
+            
             const list = [...listModified, action.payload]
+            console.log('listModified', listModified)
+            console.log('list',list)
+            console.log('payload',action.payload  )
             return {...state, list: list}
         case 'DELETE_NOTE':
             const listFiltered = state.list.filter(note => note.id != action.payload.id)
-            console.log(listFiltered)
             return {...state, list: listFiltered}
         case 'FILTER_BY_TEXT':
             return { ...state, list: action.payload }
