@@ -1,26 +1,31 @@
-import { Route, Routes } from 'react-router-dom'
-import './Styles/App.css'
-import PublicLayout from './Layout/PublicLayout'
-import CreateNote from './Pages/CreateNote'
-import NoteDetail from './Pages/NoteDetail'
-import { useEffect } from 'react'
-import axios from 'axios'
+import { Route, Routes } from "react-router-dom";
+import PublicLayout from "./Layout/PublicLayout";
+import CreateNote from "./Pages/CreateNote";
+import NoteDetail from "./Pages/NoteDetail";
+import NoteList from "./Pages/NoteList";
 
 function App() {
   return (
-    <div className="App">
-     <Routes>
-        <Route path='/' element={<PublicLayout/>}>
-            <Route path='/createnote' element={<CreateNote/>}/>
-            <Route path='/editnote/:id' element={<CreateNote/>}/>
-            <Route path='/note/:id' element={<NoteDetail/>}/>
+    <div>
+      <Routes>
+        <Route path="/" element={<PublicLayout />}>
+          <Route element={<NoteList />}>
+            <Route path="/createnote" element={<CreateNote />} />
+            <Route path="/note/:id" element={<NoteDetail />} />
+            <Route path="/editnote/:id" element={<CreateNote />} />
+          </Route>
+          <Route path="/notes" element={<NoteList />} />
+          <Route path="/archive" element={<NoteList archived />}>
+            <Route
+              path="/archive/createnote"
+              element={<CreateNote fromArchive />}
+            />
+            <Route path="/archive/:id" element={<NoteDetail fromArchive />} />
+          </Route>
         </Route>
-      </Routes> 
+      </Routes>
     </div>
-  )
+  );
 }
 
-export default App
-
-
- {/* */}
+export default App;

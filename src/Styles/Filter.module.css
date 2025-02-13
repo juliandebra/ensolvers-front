@@ -1,0 +1,71 @@
+.form {
+  margin: 10px;
+}
+
+.input {
+  height: 40px;
+  border-radius: 10px;
+  padding: 0 10px 0 10px;
+  margin: 10px;
+}
+.inputDate {
+  height: 40px;
+  border-radius: 10px;
+  padding: 0 10px 0 10px;
+  margin: 10px;
+}
+.catContainer {
+  position: relative; /* Necesario para que .suggestions se posicione correctamente */
+  display: inline-block; /* Para que el ancho se ajuste al input */
+}
+.formBtn {
+  width: 160px;
+  height: 40px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #5e2b5a;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+  margin: 10px;
+}
+.formBtn:hover {
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.54);
+}
+.suggestions {
+  position: absolute;
+  top: 100%; /* Coloca la lista justo debajo del input */
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.suggestions p {
+  margin: 0;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestions p:hover {
+  background-color: #f0f0f0;
+}
+.categoriesUl {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.categoriesUl div {
+  border: 1px solid #000;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 5px;
+}
+.categoriesUl span {
+  color: red;
+  margin-left: 5px;
+  cursor: pointer;
+}

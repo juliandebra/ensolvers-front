@@ -1,9 +1,22 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background-color: #241623; 
-    color: #F7FFF7; 
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--terciary-color);
+  color: var(--white);
+}
+
+.icon {
+  padding: 10px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--white);
+  margin: 5px;
+  cursor: pointer;
+  transition: var(--transition-speed);
+}
+
+.icon:hover {
+  color: var(--hover-color);
+  border: 1px solid var(--hover-color);
+}

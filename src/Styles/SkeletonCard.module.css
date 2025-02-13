@@ -1,32 +1,51 @@
+@keyframes loadingAnimation {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
 .skeleton {
-    width: calc(23% - 2rem);
-    padding: 10px;
-    height: 250px;
-    background-color: #292929;
-    margin: 10px;
-    border-radius: 10px;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.24);
-    border: 2px solid rgba(7, 7, 7, 0.12);
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-family: 'Poppins', sans-serif;
-    opacity: .7;
-  }
-  
-  .skeletonTitle {
-    height: 20px;
-    width: 200px;
-    background-color: #555;
-    margin-top: 30px;
-  }
-  
-  .skeletonButton {
-    height: 30px;
-    width: 100px;
-    background-color: #444;
-    margin: 20px auto;
-  }
-  
+  width: 90%;
+  max-width: 320px;
+  padding: 20px;
+  height: 250px;
+  background: linear-gradient(90deg, #292929 25%, #3a3a3a 50%, #292929 75%);
+  background-size: 200% 100%;
+  animation: loadingAnimation 1.5s infinite linear;
+  margin-top: 40px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-hover);
+  border: 2px solid rgba(7, 7, 7, 0.12);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-family: "Poppins", sans-serif;
+  opacity: 0.7;
+}
+
+.skeletonTitle {
+  height: 20px;
+  width: 200px;
+  background-color: #555;
+  margin-top: 10px;
+}
+
+.skeletonDescription {
+  height: 120px;
+  background-color: #444;
+  margin-top: 10px;
+}
+.skeletonDate {
+  height: 30px;
+  width: 90px;
+  background-color: #444;
+  margin: 10px;
+}
+.skeletonButton {
+  height: 50px;
+  width: 50px;
+  background-color: #555;
+  margin: auto;
+}

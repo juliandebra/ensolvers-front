@@ -1,19 +1,37 @@
-import React from 'react'
-import {footer, image} from '../Styles/Footer.module.css'
-import seqLogo from '../assets/sequelize-logo.svg'
-import nodeLogo from '../assets/node-logo.png'
-import react from '../assets/react.svg'
-import pgLogo from '../assets/pg-logo.svg'
+import React, { useEffect, useState } from "react";
+import { footer, image, hidden } from "../Styles/Footer.module.css";
+import tOLogo from "../assets/typeorm.svg";
+import nestLogo from "../assets/nestjs.svg";
+import react from "../assets/vite.svg";
+import pgLogo from "../assets/pg-logo.svg";
 const Footer = () => {
-  return (
-    <div className={footer}>
-      <h4>This application is build with </h4>
-      <img className={image} src={nodeLogo} alt=""  />
-      <img className={image} src={react} alt="" />
-      <img className={image} src={seqLogo} alt=""  />
-      <img className={image} src={pgLogo} alt="" />
-    </div>
-  )
-}
+  const [isVisible, setIsVisible] = useState(true);
+  const [prevScrollPos, setPrevScrollPos] = useState(window.scrollY);
 
-export default Footer
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+      if (prevScrollPos > currentScrollPos) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+      setPrevScrollPos(currentScrollPos);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [prevScrollPos]);
+  return (
+    <div className={`${footer} ${isVisible ? "" : hidden}`}>
+      <h4>This application is build with </h4>
+      <img className={image} src={nestLogo} alt="Nest.js" />
+      <img className={image} src={react} alt="Vite" />
+      <img className={image} src={tOLogo} alt="TypeORM" />
+      <img className={image} src={pgLogo} alt="PostgreSQL" />
+    </div>
+  );
+};
+
+export default Footer;
